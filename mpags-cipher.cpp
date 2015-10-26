@@ -11,8 +11,10 @@ int main(int argc, char* argv[]) {
   std::string inputFile {""};
   std::string outputFile {""};
 
-  // Process command line arguments
-  for (int i {0}; i < argc; ++i) {
+  // Process command line arguments - ignore zeroth element of argv
+  // as we know this to be the program name and don't need to worry
+  // about it
+  for (int i {1}; i < argc; ++i) {
     std::string argvString(argv[i]);
 
     // Handle help flag(s)
@@ -65,6 +67,12 @@ int main(int argc, char* argv[]) {
         outputFile = argv[i+1];
         i += 1;
       }
+    }
+    else {
+      // Have an unknown flag to output error message and return non-zero
+      // exit status to indicate failure
+      std::cout << "[error] unknown argument '" << argvString << "'\n";
+      return 1;
     }
   }
 
