@@ -37,10 +37,18 @@ Available options:
 
   --version        Print version information
 
+  -i FILE          Read text to be processed from FILE
+                   Stdin will be used if not supplied
+
+  -o FILE          Write processed text to FILE
+                   Stdout will be used if not supplied
+
 
 ```
 
-When run, it will wait for user input from the keyboard until RETURN
+Note that in the current version, the `-i` and `-o` options do not yet
+implement full read/write to/from file functionality. When run,
+`mpags-cipher` will wait for user input from the keyboard until RETURN
 followed by CTRL-D are pressed. It will then echo the input to stdout
 with the following transliteration performed:
 

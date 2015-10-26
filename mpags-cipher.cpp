@@ -7,11 +7,15 @@
 
 //! Main function of the mpags-cipher program
 int main(int argc, char* argv[]) {
+  // Command line inputs
+  std::string inputFile {""};
+  std::string outputFile {""};
+
   // Process command line arguments
   for (int i {0}; i < argc; ++i) {
     std::string argvString(argv[i]);
 
-    // Check for help request
+    // Handle help flag(s)
     if (argvString == "-h" || argvString == "--help") {
       // Line splitting for readability
       std::cout
@@ -19,15 +23,48 @@ int main(int argc, char* argv[]) {
         << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
         << "Available options:\n\n"
         << "  -h|--help        Print this help message and exit\n\n"
-        << "  --version        Print version information\n\n";
+        << "  --version        Print version information\n\n"
+        << "  -i FILE          Read text to be processed from FILE\n"
+        << "                   Stdin will be used if not supplied\n\n"
+        << "  -o FILE          Write processed text to FILE\n"
+        << "                   Stdout will be used if not supplied\n\n";
       // Help requires no further action, so return from main
       // with 0 used to indicate success
       return 0;
     }
+    // Handle version flag
     else if (argvString == "--version") {
       // Like help, version is an info request, so we return immediately.
       std::cout << "0.1.0\n";
       return 0;
+    }
+    // Handle input file option
+    else if (argvString == "-i") {
+      // Next element is filename unless -i is the last argument
+      if (i == argc-1) {
+        std::cout << "-i requires a filename argument" << std::endl;
+        // exit main with non-zero return to indicate failure
+        return 1;
+      }
+      else {
+        // Got filename, so assign value and advance past it.
+        inputFile = argv[i+1];
+        i += 1;
+      }
+    }
+    // Handle output file option
+    else if (argvString == "-o") {
+      // Next element is filename unless -i is the last argument
+      if (i == argc-1) {
+        std::cout << "-o requires a filename argument" << std::endl;
+        // exit main with non-zero return to indicate failure
+        return 1;
+      }
+      else {
+        // Got filename, so assign value and advance past it.
+        outputFile = argv[i+1];
+        i += 1;
+      }
     }
   }
 
