@@ -35,6 +35,9 @@ Available options:
 
   -h|--help        Print this help message and exit
 
+  --version        Print version information
+
+
 ```
 
 When run, it will wait for user input from the keyboard until RETURN

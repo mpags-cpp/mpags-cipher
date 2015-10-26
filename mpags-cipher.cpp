@@ -18,9 +18,15 @@ int main(int argc, char* argv[]) {
         << "Usage: mpags-cipher \n\n"
         << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
         << "Available options:\n\n"
-        << "  -h|--help        Print this help message and exit\n\n";
+        << "  -h|--help        Print this help message and exit\n\n"
+        << "  --version        Print version information\n\n";
       // Help requires no further action, so return from main
       // with 0 used to indicate success
+      return 0;
+    }
+    else if (argvString == "--version") {
+      // Like help, version is an info request, so we return immediately.
+      std::cout << "0.1.0\n";
       return 0;
     }
   }
