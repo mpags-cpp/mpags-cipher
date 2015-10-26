@@ -28,10 +28,11 @@ by CTRL-D are pressed. It will then echo the input to stdout with the
 following transliteration performed:
 
 - Alphabetical characters are converted to uppercase
-- All other characters (punctuation, digits) are discarded
+- Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")
+- All other characters (punctuation) are discarded
 
-This provides a suitable alphabet for encryption/decryption with classical
-ciphers.
+This provides conversion of any text input to a suitable character set
+for encryption/decryption with classical ciphers.
 
 
 # Source Code Layout
