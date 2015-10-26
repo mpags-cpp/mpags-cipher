@@ -5,14 +5,21 @@ A simple command line tool for encrypting/decrypting text using classical cipher
 Compilation of `mpags-cipher` requires a C++11 compatible compiler (GCC
 4.8 or better, Clang 3.4 or better are recommended) on a UNIX operating
 system. To build from a clone of this repository, open a terminal window
-and change directory into that holding this README. Simple run the
+and change directory into that holding this README. Simply run the
 compiler, and ensure any needed flags to enable C++11 suport are passed.
+In addition, you should also pass a suitable set of warning flags. For
+GNU and Clang compilers, this set is
+
+```
+-Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow
+```
+
 For example, to build on a Linux platform with `g++`, do (assuming you
 cloned the repository to `$HOME/mpags-cipher.git`)
 
 ```
 $ cd $HOME/mpags-cipher.git
-$ g++ -std=c++11 mpags-cipher.cpp -o mpags-cipher
+$ g++ -std=c++11 -Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow mpags-cipher.cpp -o mpags-cipher
 ```
 
 The resulting `mpags-cipher` executable can then be run directly.
