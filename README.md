@@ -24,7 +24,14 @@ $ g++ -std=c++11 -Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow mpags-c
 
 The resulting `mpags-cipher` executable can then be run directly. When
 run, it will wait for user input from the keyboard until RETURN followed
-by CTRL-D are pressed. It will then echo the input to stdout.
+by CTRL-D are pressed. It will then echo the input to stdout with the
+following transliteration performed:
+
+- Alphabetical characters are converted to uppercase
+- All other characters (punctuation, digits) are discarded
+
+This provides a suitable alphabet for encryption/decryption with classical
+ciphers.
 
 
 # Source Code Layout

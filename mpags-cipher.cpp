@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 
+// For std::isalpha and std::isupper
+#include <cctype>
+
 //! Main function of the mpags-cipher program
 int main(int /*argc*/, char* /*argv*/[]) {
   // Read in user input from stdin
@@ -10,7 +13,12 @@ int main(int /*argc*/, char* /*argv*/[]) {
 
   // Loop over stdin until Return then CTRL-D pressed (EOF)
   while (std::cin >> inputChar) {
-    inputText += inputChar;
+    // Uppercase alphabetic characters
+    if (std::isalpha(inputChar)) {
+      inputText += std::toupper(inputChar);
+    }
+
+    // Discard everything else
   }
 
   // Output the input text
