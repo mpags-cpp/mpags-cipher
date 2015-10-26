@@ -27,7 +27,7 @@ provides the following command line options:
 
 ```
 $ ./mpags-cipher --help
-Usage: mpags-cipher
+Usage: mpags-cipher [-i <file>] [-o <file>]
 
 Encrypts/Decrypts input alphanumeric text using classical ciphers
 

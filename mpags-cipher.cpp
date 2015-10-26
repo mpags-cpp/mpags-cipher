@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
   if (helpRequested) {
     // Line splitting for readability
     std::cout
-        << "Usage: mpags-cipher \n\n"
+        << "Usage: mpags-cipher [-i <file>] [-o <file>]\n\n"
         << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
         << "Available options:\n\n"
         << "  -h|--help        Print this help message and exit\n\n"
