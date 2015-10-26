@@ -8,6 +8,8 @@
 //! Main function of the mpags-cipher program
 int main(int argc, char* argv[]) {
   // Command line inputs
+  bool helpRequested {false};
+  bool versionRequested {false};
   std::string inputFile {""};
   std::string outputFile {""};
 
@@ -17,31 +19,14 @@ int main(int argc, char* argv[]) {
   for (int i {1}; i < argc; ++i) {
     std::string argvString(argv[i]);
 
-    // Handle help flag(s)
     if (argvString == "-h" || argvString == "--help") {
-      // Line splitting for readability
-      std::cout
-        << "Usage: mpags-cipher \n\n"
-        << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
-        << "Available options:\n\n"
-        << "  -h|--help        Print this help message and exit\n\n"
-        << "  --version        Print version information\n\n"
-        << "  -i FILE          Read text to be processed from FILE\n"
-        << "                   Stdin will be used if not supplied\n\n"
-        << "  -o FILE          Write processed text to FILE\n"
-        << "                   Stdout will be used if not supplied\n\n";
-      // Help requires no further action, so return from main
-      // with 0 used to indicate success
-      return 0;
+      helpRequested = true;
     }
-    // Handle version flag
     else if (argvString == "--version") {
-      // Like help, version is an info request, so we return immediately.
-      std::cout << "0.1.0\n";
-      return 0;
+      versionRequested = true;
     }
-    // Handle input file option
     else if (argvString == "-i") {
+      // Handle input file option
       // Next element is filename unless -i is the last argument
       if (i == argc-1) {
         std::cout << "-i requires a filename argument" << std::endl;
@@ -54,8 +39,8 @@ int main(int argc, char* argv[]) {
         i += 1;
       }
     }
-    // Handle output file option
     else if (argvString == "-o") {
+      // Handle output file option
       // Next element is filename unless -i is the last argument
       if (i == argc-1) {
         std::cout << "-o requires a filename argument" << std::endl;
@@ -76,6 +61,31 @@ int main(int argc, char* argv[]) {
     }
   }
 
+  // Handle help, if requested
+  if (helpRequested) {
+    // Line splitting for readability
+    std::cout
+        << "Usage: mpags-cipher \n\n"
+        << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
+        << "Available options:\n\n"
+        << "  -h|--help        Print this help message and exit\n\n"
+        << "  --version        Print version information\n\n"
+        << "  -i FILE          Read text to be processed from FILE\n"
+        << "                   Stdin will be used if not supplied\n\n"
+        << "  -o FILE          Write processed text to FILE\n"
+        << "                   Stdout will be used if not supplied\n\n";
+    // Help requires no further action, so return from main
+    // with 0 used to indicate success
+    return 0;
+  }
+
+  // Handle version, if requested. Like help, requires no further action,
+  // so return from main with zero to indicate success
+  if (versionRequested) {
+    std::cout << "0.1.0" << std::endl;
+    return 0;
+  }
+
   // Read in user input from stdin/file
   // Warn that input file option not yet implemented
   if (!inputFile.empty()) {
@@ -84,10 +94,10 @@ int main(int argc, char* argv[]) {
               << "') not implemented yet, using stdin\n";
   }
 
+  // Loop over stdin until Return then CTRL-D pressed (EOF)
   char inputChar {'x'};
   std::string inputText {""};
 
-  // Loop over stdin until Return then CTRL-D pressed (EOF)
   while (std::cin >> inputChar) {
     // Uppercase alphabetic characters
     if (std::isalpha(inputChar)) {
