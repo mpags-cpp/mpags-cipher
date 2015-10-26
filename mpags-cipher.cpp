@@ -6,7 +6,13 @@
 #include <cctype>
 
 //! Main function of the mpags-cipher program
-int main(int /*argc*/, char* /*argv*/[]) {
+int main(int argc, char* argv[]) {
+  // Process command line arguments
+  for (int i {0}; i < argc; ++i) {
+    std::string argvString(argv[i]);
+    std::cout << "argv[" << i << "] = " << argvString << "\n";
+  }
+
   // Read in user input from stdin
   char inputChar {'x'};
   std::string inputText {""};
