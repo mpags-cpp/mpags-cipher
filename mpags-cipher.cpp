@@ -76,7 +76,14 @@ int main(int argc, char* argv[]) {
     }
   }
 
-  // Read in user input from stdin
+  // Read in user input from stdin/file
+  // Warn that input file option not yet implemented
+  if (!inputFile.empty()) {
+    std::cout << "[warning] input from file ('"
+              << inputFile
+              << "') not implemented yet, using stdin\n";
+  }
+
   char inputChar {'x'};
   std::string inputText {""};
 
@@ -125,6 +132,13 @@ int main(int argc, char* argv[]) {
   }
 
   // Output the input text
+  // Warn that output file option not yet implemented
+  if (!outputFile.empty()) {
+    std::cout << "[warning] output to file ('"
+              << outputFile
+              << "') not implemented yet, using stdout\n";
+  }
+
   std::cout << inputText << "\n";
 
   // No requirement to return from main, but we do so for clarity and
