@@ -22,10 +22,24 @@ $ cd $HOME/mpags-cipher.git
 $ g++ -std=c++11 -Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow mpags-cipher.cpp -o mpags-cipher
 ```
 
-The resulting `mpags-cipher` executable can then be run directly. When
-run, it will wait for user input from the keyboard until RETURN followed
-by CTRL-D are pressed. It will then echo the input to stdout with the
-following transliteration performed:
+The resulting `mpags-cipher` executable can then be run directly, and
+provides the following command line options:
+
+```
+$ ./mpags-cipher --help
+Usage: mpags-cipher
+
+Encrypts/Decrypts input alphanumeric text using classical ciphers
+
+Available options:
+
+  -h|--help        Print this help message and exit
+
+```
+
+When run, it will wait for user input from the keyboard until RETURN
+followed by CTRL-D are pressed. It will then echo the input to stdout
+with the following transliteration performed:
 
 - Alphabetical characters are converted to uppercase
 - Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")

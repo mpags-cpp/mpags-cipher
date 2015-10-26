@@ -10,7 +10,19 @@ int main(int argc, char* argv[]) {
   // Process command line arguments
   for (int i {0}; i < argc; ++i) {
     std::string argvString(argv[i]);
-    std::cout << "argv[" << i << "] = " << argvString << "\n";
+
+    // Check for help request
+    if (argvString == "-h" || argvString == "--help") {
+      // Line splitting for readability
+      std::cout
+        << "Usage: mpags-cipher \n\n"
+        << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
+        << "Available options:\n\n"
+        << "  -h|--help        Print this help message and exit\n\n";
+      // Help requires no further action, so return from main
+      // with 0 used to indicate success
+      return 0;
+    }
   }
 
   // Read in user input from stdin
