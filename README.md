@@ -22,7 +22,9 @@ $ cd $HOME/mpags-cipher.git
 $ g++ -std=c++11 -Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow mpags-cipher.cpp -o mpags-cipher
 ```
 
-The resulting `mpags-cipher` executable can then be run directly.
+The resulting `mpags-cipher` executable can then be run directly. When
+run, it will wait for user input from the keyboard until RETURN followed
+by CTRL-D are pressed. It will then echo the input to stdout.
 
 
 # Source Code Layout
