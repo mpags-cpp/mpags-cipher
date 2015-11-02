@@ -8,7 +8,8 @@ bool processCommandLine(int argc, char* argv[],
                         bool& requiresVersion,
                         std::string& inputFile,
                         std::string& outputFile,
-                        std::string& cipherKey) {
+                        std::string& cipherKey,
+                        bool& cipherDecrypt) {
   // Process command line arguments - ignore zeroth element of argv
   // as we know this to be the program name and don't need to worry
   // about it
@@ -65,6 +66,9 @@ bool processCommandLine(int argc, char* argv[],
         i += 1;
       }
     }
+    else if (argvString == "--decrypt") {
+      cipherDecrypt = true;
+    }
     else {
       // Have an unknown flag so output error message and return false
       // to indicate failure
@@ -90,7 +94,9 @@ void doPrintCommandLineHelp() {
       << "  -o FILE          Write processed text to FILE\n"
       << "                   Stdout will be used if not supplied\n\n"
       << "  -k KEY           Use KEY as key for cipher\n"
-      << "                   An empty key is used if not supplied\n\n";
+      << "                   An empty key is used if not supplied\n\n"
+      << "  --decrypt        Decrypt input text using KEY instead of\n"
+      << "                   encrypting\n\n";
 }
 
 

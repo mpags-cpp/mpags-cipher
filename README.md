@@ -73,6 +73,9 @@ Available options:
   -k KEY           Use KEY as key for cipher
                    An empty key is used if not supplied
 
+  --decrypt        Decrypt input text using KEY instead of
+                   encrypting
+
 ```
 
 If no input file is supplied, `mpags-cipher` will wait for user input
