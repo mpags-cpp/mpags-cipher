@@ -1,5 +1,6 @@
 // Standard Library includes
 #include <iostream>
+#include <fstream>
 #include <string>
 
 // Our project headers
@@ -46,30 +47,48 @@ int main(int argc, char* argv[]) {
   }
 
   // Read in user input from stdin/file
-  // Warn that input file option not yet implemented
-  if (!inputFile.empty()) {
-    std::cout << "[warning] input from file ('"
-              << inputFile
-              << "') not implemented yet, using stdin\n";
-  }
-
-  // Loop over stdin until Return then CTRL-D pressed (EOF)
   char inputChar {'x'};
   std::string inputText {""};
 
-  while (std::cin >> inputChar) {
-    inputText += transformChar(inputChar);
+  if(inputFile.empty()) {
+    // Loop over stdin until Return then CTRL-D pressed (EOF)
+    while (std::cin >> inputChar) {
+      inputText += transformChar(inputChar);
+    }
+  }
+  else {
+    // Create ifstream and loop over that until EOF
+    std::ifstream inFileStream {inputFile};
+    if (inFileStream.good()) {
+      while (inFileStream >> inputChar) {
+        inputText += transformChar(inputChar);
+      }
+    }
+    else {
+      std::cerr << "[error] bad input stream, cannot open/read file '"
+                << inputFile
+                <<"'\n";
+    }
   }
 
-  // Output the input text
-  // Warn that output file option not yet implemented
-  if (!outputFile.empty()) {
-    std::cout << "[warning] output to file ('"
-              << outputFile
-              << "') not implemented yet, using stdout\n";
-  }
+  // TEXT ENCRYPTION/DECRYPTION
+  std::string outputText {inputText};
 
-  std::cout << inputText << "\n";
+  // Output the input text to stdout or file if filename supplied
+  if (outputFile.empty()) {
+    std::cout << outputText << "\n";
+  }
+  else {
+    std::ofstream outFileStream {outputFile};
+    if (outFileStream.good()) {
+      outFileStream << outputText << "\n";
+    }
+    else {
+      std::cerr << "[error] bad output stream, cannot open/write file '"
+                << outputFile
+                <<"'\n";
+    }
+  }
 
   // No requirement to return from main, but we do so for clarity and
   // consistency with other functions.

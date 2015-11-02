@@ -73,18 +73,17 @@ Available options:
 
 ```
 
-Note that in the current version, the `-i` and `-o` options do not yet
-implement full read/write to/from file functionality. When run,
-`mpags-cipher` will wait for user input from the keyboard until RETURN
-followed by CTRL-D are pressed. It will then echo the input to stdout
-with the following transliteration performed:
+If no input file is supplied, `mpags-cipher` will wait for user input
+from the keyboard until RETURN followed by CTRL-D are pressed.
+It will then echo the input to stdout or write it to the file supplied with
+the `-o` option.
+
+To ensure the input text can be used with the character sets known to
+classical ciphers, it is transliterated using the following rules:
 
 - Alphabetical characters are converted to uppercase
 - Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")
 - All other characters (punctuation) are discarded
-
-This provides conversion of any text input to a suitable character set
-for encryption/decryption with classical ciphers.
 
 
 # Source Code Layout
