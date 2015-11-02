@@ -14,5 +14,11 @@ bool processCommandLine(int argc, char* argv[],
                         std::string& inputFile,
                         std::string& outputFile);
 
+//! Print help on command line interface to stdout
+void doPrintCommandLineHelp();
+
+//! Print version of mpags-cipher to stdout
+void doPrintCommandLineVersion();
+
 #endif // MPAGSCIPHER_PROCESSCOMMANDLINE_HPP
 
