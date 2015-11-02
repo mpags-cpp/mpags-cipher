@@ -5,6 +5,57 @@
 // For std::isalpha and std::isupper
 #include <cctype>
 
+//! Transform input char to string for character/word set of ciphers
+/*!
+  !param a character to be transformed
+  !return the transformed string
+*/
+std::string transformChar(const char c) {
+  std::string inputText {""};
+
+  // Uppercase alphabetic characters
+  if (std::isalpha(c)) {
+    inputText += std::toupper(c);
+  }
+
+  // Transliterate digits to English words
+  switch (c) {
+    case '0':
+      inputText += "ZERO";
+      break;
+    case '1':
+      inputText += "ONE";
+      break;
+    case '2':
+      inputText += "TWO";
+      break;
+    case '3':
+      inputText += "THREE";
+      break;
+    case '4':
+      inputText += "FOUR";
+      break;
+    case '5':
+      inputText += "FIVE";
+      break;
+    case '6':
+      inputText += "SIX";
+      break;
+    case '7':
+      inputText += "SEVEN";
+      break;
+    case '8':
+      inputText += "EIGHT";
+      break;
+    case '9':
+      inputText += "NINE";
+      break;
+  }
+
+  // Discard everything else as our ciphers cannot work with them
+  return inputText;
+}
+
 //! Main function of the mpags-cipher program
 int main(int argc, char* argv[]) {
   // Command line inputs
@@ -99,46 +150,7 @@ int main(int argc, char* argv[]) {
   std::string inputText {""};
 
   while (std::cin >> inputChar) {
-    // Uppercase alphabetic characters
-    if (std::isalpha(inputChar)) {
-      inputText += std::toupper(inputChar);
-    }
-
-    // Transliterate digits to English words
-    switch (inputChar) {
-      case '0':
-        inputText += "ZERO";
-        break;
-      case '1':
-        inputText += "ONE";
-        break;
-      case '2':
-        inputText += "TWO";
-        break;
-      case '3':
-        inputText += "THREE";
-        break;
-      case '4':
-        inputText += "FOUR";
-        break;
-      case '5':
-        inputText += "FIVE";
-        break;
-      case '6':
-        inputText += "SIX";
-        break;
-      case '7':
-        inputText += "SEVEN";
-        break;
-      case '8':
-        inputText += "EIGHT";
-        break;
-      case '9':
-        inputText += "NINE";
-        break;
-    }
-
-    // Discard everything else as our ciphers cannot work with them
+    inputText += transformChar(inputChar);
   }
 
   // Output the input text
