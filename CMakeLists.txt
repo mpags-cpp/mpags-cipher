@@ -22,7 +22,11 @@ endif()
 # - Declare the build of mpags-cipher main program
 add_executable(mpags-cipher
   mpags-cipher.cpp
+  MPAGSCipher/TransformChar.hpp
   MPAGSCipher/TransformChar.cpp
+  )
+target_include_directories(mpags-cipher
+  PRIVATE MPAGSCipher
   )
 target_compile_features(mpags-cipher
   PRIVATE cxx_auto_type cxx_range_for cxx_uniform_initialization

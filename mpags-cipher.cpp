@@ -2,13 +2,8 @@
 #include <iostream>
 #include <string>
 
-//! Transform input char to string for character/word set of ciphers
-/*!
-  !param a character to be transformed
-  !return the transformed string
-*/
-std::string transformChar(const char c);
-
+// Our project headers
+#include "TransformChar.hpp"
 
 //! Main function of the mpags-cipher program
 int main(int argc, char* argv[]) {
