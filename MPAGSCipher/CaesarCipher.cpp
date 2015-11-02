@@ -1,5 +1,6 @@
 #include "CaesarCipher.hpp"
 
+#include <cctype>
 #include <string>
 #include <vector>
 
@@ -9,8 +10,18 @@ bool CaesarCipher(const std::string& input, const std::string& key,
   const std::vector<char> plainAlphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
   const size_t alphabetSize {plainAlphabet.size()};
 
-  // NB, this doesn't handle all error cases - i.e. the supplied string
-  // is *not* convertible. Appropriate method is exceptions
+  // Check that the key string if of non-zero length
+  if ( key.empty() ) {
+    return false;
+  }
+  // If so, also check that all characters in the key string are digits
+  for (const char c : key) {
+    if ( ! std::isdigit(c) ) {
+      return false;
+    }
+  }
+
+  // Convert the string to an unsigned integer to get the shift
   const size_t caesarShift {std::stoul(key) % alphabetSize};
 
   // Store encrypted char
