@@ -1,3 +1,5 @@
+#include "TransformChar.hpp"
+
 #include <string>
 #include <cctype>
 
