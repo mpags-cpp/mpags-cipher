@@ -8,7 +8,7 @@
   !param
   !return True if command line parsing suceeded
 */
-bool processCommandLine(int argc, char* argv[],
+bool processCommandLine(const int argc, char* argv[],
                         bool& requiresHelp,
                         bool& requiresVersion,
                         std::string& inputFile,
