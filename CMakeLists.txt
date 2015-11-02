@@ -22,6 +22,8 @@ endif()
 # - Declare the build of mpags-cipher main program
 add_executable(mpags-cipher
   mpags-cipher.cpp
+  MPAGSCipher/ProcessCommandLine.hpp
+  MPAGSCipher/ProcessCommandLine.cpp
   MPAGSCipher/TransformChar.hpp
   MPAGSCipher/TransformChar.cpp
   )

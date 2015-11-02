@@ -3,6 +3,7 @@
 #include <string>
 
 // Our project headers
+#include "ProcessCommandLine.hpp"
 #include "TransformChar.hpp"
 
 //! Main function of the mpags-cipher program
@@ -13,52 +14,10 @@ int main(int argc, char* argv[]) {
   std::string inputFile {""};
   std::string outputFile {""};
 
-  // Process command line arguments - ignore zeroth element of argv
-  // as we know this to be the program name and don't need to worry
-  // about it
-  for (int i {1}; i < argc; ++i) {
-    std::string argvString(argv[i]);
+  bool commandLineParsed {processCommandLine(argc, argv, helpRequested, versionRequested, inputFile, outputFile)};
 
-    if (argvString == "-h" || argvString == "--help") {
-      helpRequested = true;
-    }
-    else if (argvString == "--version") {
-      versionRequested = true;
-    }
-    else if (argvString == "-i") {
-      // Handle input file option
-      // Next element is filename unless -i is the last argument
-      if (i == argc-1) {
-        std::cout << "-i requires a filename argument" << std::endl;
-        // exit main with non-zero return to indicate failure
-        return 1;
-      }
-      else {
-        // Got filename, so assign value and advance past it.
-        inputFile = argv[i+1];
-        i += 1;
-      }
-    }
-    else if (argvString == "-o") {
-      // Handle output file option
-      // Next element is filename unless -i is the last argument
-      if (i == argc-1) {
-        std::cout << "-o requires a filename argument" << std::endl;
-        // exit main with non-zero return to indicate failure
-        return 1;
-      }
-      else {
-        // Got filename, so assign value and advance past it.
-        outputFile = argv[i+1];
-        i += 1;
-      }
-    }
-    else {
-      // Have an unknown flag to output error message and return non-zero
-      // exit status to indicate failure
-      std::cout << "[error] unknown argument '" << argvString << "'\n";
-      return 1;
-    }
+  if(!commandLineParsed) {
+    return 1;
   }
 
   // Handle help, if requested
