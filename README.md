@@ -71,7 +71,7 @@ Available options:
                    Stdout will be used if not supplied
 
   -k KEY           Use KEY as key for cipher
-                   An empty key is used if not supplied
+                   A null key, i.e. no encryption, is used if not supplied
 
   --decrypt        Decrypt input text using KEY instead of
                    encrypting
@@ -89,6 +89,8 @@ classical ciphers, it is transliterated using the following rules:
 - Alphabetical characters are converted to uppercase
 - Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")
 - All other characters (punctuation) are discarded
+
+At present only the Caesar Cipher is supported.
 
 
 # Source Code Layout

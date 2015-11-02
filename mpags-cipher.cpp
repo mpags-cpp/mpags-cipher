@@ -4,6 +4,7 @@
 #include <string>
 
 // Our project headers
+#include "CaesarCipher.hpp"
 #include "ProcessCommandLine.hpp"
 #include "TransformChar.hpp"
 
@@ -64,7 +65,11 @@ int main(int argc, char* argv[]) {
   }
 
   // TEXT ENCRYPTION/DECRYPTION
-  std::string outputText {inputText};
+  std::string outputText {""};
+  bool cryptOK {CaesarCipher(inputText, cipherKey, cipherDecrypt, outputText)};
+  if (!cryptOK) {
+    std::cerr << "[error] text processing with Caesar Cipher failed\n";
+  }
 
   // Output the input text to stdout or file if filename supplied
   if (outputFile.empty()) {
