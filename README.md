@@ -2,28 +2,55 @@
 A simple command line tool for encrypting/decrypting text using classical ciphers
 
 # Building `mpags-cipher`
-Compilation of `mpags-cipher` requires a C++11 compatible compiler (GCC
-4.8 or better, Clang 3.4 or better are recommended) on a UNIX operating
-system. To build from a clone of this repository, open a terminal window
-and change directory into that holding this README. Simply run the
-compiler, and ensure any needed flags to enable C++11 suport are passed.
-In addition, you should also pass a suitable set of warning flags. For
-GNU and Clang compilers, this set is
+Compilation of `mpags-cipher` requires the [CMake](http://www.cmake.org)
+build tool, plus a  C++11 compatible compiler (GCC 4.8 or better, Clang
+3.4 or better are recommended) and `make` on a UNIX operating system.
+Windows platforms with Visual Studio 2015 or better are also expected to
+work, but not tested.
+
+To build from a clone of this repository, open a terminal window
+and change directory into that holding this README. Create a build
+directory in which to run `cmake` and the build, and change into it:
 
 ```
--Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow
+$ ls
+CMakeLists.txt   LICENSE          README.md        mpags-cipher.cpp
+Documentation    MPAGSCipher      Testing
+$ mkdir Build
+$ cd Build
 ```
 
-For example, to build on a Linux platform with `g++`, do (assuming you
-cloned the repository to `$HOME/mpags-cipher.git`)
+Run `cmake` in this directory, pointing it to the directory holding this
+README, and consequently the top level CMake sxript for the project:
 
 ```
-$ cd $HOME/mpags-cipher.git
-$ g++ -std=c++11 -Wall -Wextra -Werror -Wfatal-errors -pedantic -Wshadow mpags-cipher.cpp -o mpags-cipher
+$ cmake ..
+... system specific output ...
+-- Configuring done
+-- Generating done
+-- Build files have been written to: ... your build dir path ...
+$
 ```
 
-The resulting `mpags-cipher` executable can then be run directly, and
-provides the following command line options:
+The exact output will depend on your system, compiler and build directory
+location, but you should not see any errors. CMake will generate
+Makefiles by default on UNIX platforms, so to build, simply run `make`
+in the build directory:
+
+```
+$ ls
+CMakeCache.txt      CMakeFiles          Makefile            cmake_install.cmake
+$ make
+... verbose output ...
+[100%] Built target mpags-cipher
+...
+$
+```
+
+Again, the exact output will be system specific, but you should see the
+`mpags-cipher` target built without error. The resulting `mpags-cipher`
+executable can then be run directly, and provides the following command
+line options:
 
 ```
 $ ./mpags-cipher --help
