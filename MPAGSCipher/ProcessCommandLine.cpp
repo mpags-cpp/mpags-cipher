@@ -7,7 +7,8 @@ bool processCommandLine(int argc, char* argv[],
                         bool& requiresHelp,
                         bool& requiresVersion,
                         std::string& inputFile,
-                        std::string& outputFile) {
+                        std::string& outputFile,
+                        std::string& cipherKey) {
   // Process command line arguments - ignore zeroth element of argv
   // as we know this to be the program name and don't need to worry
   // about it
@@ -50,6 +51,20 @@ bool processCommandLine(int argc, char* argv[],
         i += 1;
       }
     }
+    else if (argvString == "-k") {
+      // Handle cipher key option
+      // Next element is key unless -k is the last argument
+      // Always treat next element in argv as key as even things like
+      // '--help' *might* be valid!
+      if (i == argc-1) {
+        std::cerr << "-k requires a filename argument\n";
+        return false;
+      }
+      else {
+        cipherKey = argv[i+1];
+        i += 1;
+      }
+    }
     else {
       // Have an unknown flag so output error message and return false
       // to indicate failure
@@ -65,7 +80,7 @@ bool processCommandLine(int argc, char* argv[],
 void doPrintCommandLineHelp() {
   // Line splitting for readability
   std::cout
-      << "Usage: mpags-cipher [-i <file>] [-o <file>]\n\n"
+      << "Usage: mpags-cipher [-i <file>] [-k KEY] [-o <file>]\n\n"
       << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
       << "Available options:\n\n"
       << "  -h|--help        Print this help message and exit\n\n"
@@ -73,7 +88,9 @@ void doPrintCommandLineHelp() {
       << "  -i FILE          Read text to be processed from FILE\n"
       << "                   Stdin will be used if not supplied\n\n"
       << "  -o FILE          Write processed text to FILE\n"
-      << "                   Stdout will be used if not supplied\n\n";
+      << "                   Stdout will be used if not supplied\n\n"
+      << "  -k KEY           Use KEY as key for cipher\n"
+      << "                   An empty key is used if not supplied\n\n";
 }
 
 

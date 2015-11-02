@@ -54,7 +54,7 @@ line options:
 
 ```
 $ ./mpags-cipher --help
-Usage: mpags-cipher [-i <file>] [-o <file>]
+Usage: mpags-cipher [-i <file>] [-k <KEY>] [-o <file>]
 
 Encrypts/Decrypts input alphanumeric text using classical ciphers
 
@@ -70,6 +70,8 @@ Available options:
   -o FILE          Write processed text to FILE
                    Stdout will be used if not supplied
 
+  -k KEY           Use KEY as key for cipher
+                   An empty key is used if not supplied
 
 ```
 

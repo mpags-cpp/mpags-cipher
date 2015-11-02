@@ -12,7 +12,8 @@ bool processCommandLine(int argc, char* argv[],
                         bool& requiresHelp,
                         bool& requiresVersion,
                         std::string& inputFile,
-                        std::string& outputFile);
+                        std::string& outputFile,
+                        std::string& cipherKey);
 
 //! Print help on command line interface to stdout
 void doPrintCommandLineHelp();

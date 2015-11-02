@@ -14,8 +14,9 @@ int main(int argc, char* argv[]) {
   bool versionRequested {false};
   std::string inputFile {""};
   std::string outputFile {""};
+  std::string cipherKey {""};
 
-  bool commandLineParsed {processCommandLine(argc, argv, helpRequested, versionRequested, inputFile, outputFile)};
+  bool commandLineParsed {processCommandLine(argc, argv, helpRequested, versionRequested, inputFile, outputFile, cipherKey)};
 
   if(!commandLineParsed) {
     return 1;
