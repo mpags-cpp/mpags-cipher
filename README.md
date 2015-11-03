@@ -115,6 +115,27 @@ $ cmake -DCMAKE_INSTALL_PREFIX=/other/path ...
 
 or can be editted in the CMake cache via `ccmake`.
 
+# Packaging `mpags-cipher`
+In addition to installing, `mpags-cipher` sources and binaries may be
+packaged for distribution. To build a source package, build the `package_source` target, e.g.:
+
+```
+$ make package_source
+```
+
+This will create compressed tar archives of the source code in its current
+state (to package a specific version you should checkout the tag/commit for
+that version first).
+
+To build a binary package, build the `package` target, e.g.:
+
+```
+$ make package
+```
+
+This will create compressed tar archives and a self-extracting tar
+installer for the `mpags-cipher` program.
+
 # Source Code Layout
 Under this directory, the code and associated files are organised as
 follows:

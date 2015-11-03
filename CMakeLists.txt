@@ -40,3 +40,7 @@ target_compile_features(mpags-cipher
 include(GNUInstallDirs)
 install(TARGETS mpags-cipher DESTINATION ${CMAKE_INSTALL_BINDIR})
 
+# - Package mpags-cipher binaries and sources
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+include(CPack)
+
