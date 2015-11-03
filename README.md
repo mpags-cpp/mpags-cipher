@@ -92,6 +92,28 @@ classical ciphers, it is transliterated using the following rules:
 
 At present only the Caesar Cipher is supported.
 
+# Installing `mpags-cipher`
+After building `mpags-cipher`, it may be installed by building the
+`install` target, e.g.
+
+```
+$ make install
+```
+
+The default installation location will be system dependent (usually
+`/usr/local` on UNIX systems), and may be adjusted by the CMake variables
+
+- `CMAKE_INSTALL_PREFIX` to set the installation prefix
+- `CMAKE_INSTALL_BINDIR` to set the directory under `CMAKE_INSTALL_PREFIX` where programs should be installed.
+
+Both variables may be supplied as command line definitions (`-D` flags)
+to CMake, e.g.
+
+```
+$ cmake -DCMAKE_INSTALL_PREFIX=/other/path ...
+```
+
+or can be editted in the CMake cache via `ccmake`.
 
 # Source Code Layout
 Under this directory, the code and associated files are organised as

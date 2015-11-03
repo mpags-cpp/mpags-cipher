@@ -36,3 +36,7 @@ target_compile_features(mpags-cipher
   PRIVATE cxx_auto_type cxx_range_for cxx_uniform_initialization
   )
 
+# - Install mpags-cipher using UNIX/GNU directory structure
+include(GNUInstallDirs)
+install(TARGETS mpags-cipher DESTINATION ${CMAKE_INSTALL_BINDIR})
+
