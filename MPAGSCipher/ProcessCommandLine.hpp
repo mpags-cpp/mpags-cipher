@@ -1,12 +1,12 @@
+//! \file ProcessCommandLine.hpp
 #ifndef MPAGSCIPHER_PROCESSCOMMANDLINE_HPP
 #define MPAGSCIPHER_PROCESSCOMMANDLINE_HPP
 
 #include <string>
 
-//!
-/*
-  !param
-  !return True if command line parsing suceeded
+//! Extract configuration information from command line arguments
+/*!
+  \return True if command line parsing suceeded
 */
 bool processCommandLine(const int argc, char* argv[],
                         bool& requiresHelp,

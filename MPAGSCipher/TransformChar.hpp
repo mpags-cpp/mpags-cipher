@@ -1,3 +1,4 @@
+//! \file TransformChar.hpp
 #ifndef MPAGSCIPHER_TRANSFORMCHAR_HPP
 #define MPAGSCIPHER_TRANSFORMCHAR_HPP
 
@@ -5,8 +6,8 @@
 
 //! Transform input char to string for character/word set of ciphers
 /*!
-  !param a character to be transformed
-  !return the transformed string
+  \param c The character to be transformed
+  \return The transformed string
 */
 std::string transformChar(const char c);
 
